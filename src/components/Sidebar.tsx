@@ -1,13 +1,38 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import profileImg from "../imgs/profile.png";
-import { tags } from "../Dummy";
+import { useEffect, useState } from "react";
+import { API_KEY } from "../config";
+import { TagResponse, TagType } from "../types";
+import axios from "axios";
+
 const Sidebar = () => {
+  const [tags, setTags] = useState<TagType[]>();
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${API_KEY}/tags`);
+      const data = response.data.map((tag: TagResponse): TagType => {
+        return {
+          ...tag,
+          name: tag.name,
+          count: JSON.parse(tag.postIDs).length,
+        };
+      });
+      setTags(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   const handleOpenNewTab = (url: string) => {
     window.open(url, "_blank", "noopener, noreferrer");
   };
   return (
     <Container>
-      <ImgContainer>
+      <ImgContainer to={`/`}>
         <Img src={profileImg} alt="" />
       </ImgContainer>
       <Introduce>안녕하세요! 개발자 서창희입니다.</Introduce>
@@ -31,9 +56,16 @@ const Sidebar = () => {
       <Line></Line>
       <TagsContainer>
         <Tag>전체보기</Tag>
-        {tags.map((tag) => {
-          return <Tag>{tag}</Tag>;
-        })}
+        {tags &&
+          tags.map((tag) => {
+            return (
+              <Tag key={tag.name}>
+                {tag.name} {"("}
+                {tag.count}
+                {")"}
+              </Tag>
+            );
+          })}
       </TagsContainer>
     </Container>
   );
@@ -48,7 +80,7 @@ const Container = styled.div`
   height: 100%;
   width: 250px;
 `;
-const ImgContainer = styled.div`
+const ImgContainer = styled(Link)`
   height: 200px;
   width: 200px;
   margin-top: 25px;
@@ -62,7 +94,7 @@ const Img = styled.img`
 const Introduce = styled.div`
   height: 25px;
   width: 200px;
-  font-size: 7px;
+  font-size: 15px;
   text-align: center;
 `;
 const Line = styled.div`
@@ -88,6 +120,12 @@ const LinkBtn = styled.button`
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
+  @font-face {
+    font-family: "LGEITextTTF";
+    font-weight: normal;
+    src: url("./fonts/LGEITextTTF-Regular.ttf") format("truetype");
+  }
+  font-family: LGEITextTTF;
 `;
 const TagsContainer = styled.div`
   margin-top: 20px;
@@ -109,4 +147,5 @@ const Tag = styled.div`
     border-bottom: 0.5px solid #000000;
   }
   cursor: pointer;
+  font-size: 15px;
 `;

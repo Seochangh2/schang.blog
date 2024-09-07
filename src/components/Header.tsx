@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
 const Header = () => {
   return (
     <Container>
       <Title>
-        <Black></Black>
+        <Black to={"/write"}></Black>
         <Yellow></Yellow>
-        <Text>schang.blog</Text>
+        <Text to={"/"}>schang.blog</Text>
       </Title>
       <Line></Line>
       <SearchBox></SearchBox>
@@ -36,16 +37,19 @@ const Yellow = styled.div`
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 `;
-const Black = styled.div`
+const Black = styled(Link)`
   background-color: black;
   width: 25px;
   height: 70%;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 `;
-const Text = styled.div`
+const Text = styled(Link)`
   margin-left: 25px;
   font-size: 15px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
 `;
 const Line = styled.div`
   height: 50px;

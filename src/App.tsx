@@ -1,33 +1,23 @@
-import React from "react";
-import styled from "styled-components";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import PostsContainer from "./components/PostsContainer";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
+import Post from "./pages/Post";
+import Write from "./pages/Write";
+import Edit from "./pages/Edit";
 function App() {
   return (
-    <Container>
-      <Header></Header>
-      <Contents>
-        <Sidebar></Sidebar>
-        <PostsContainer></PostsContainer>
-      </Contents>
-    </Container>
+    <div className="App">
+      <AnimatePresence>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/post/:id" element={<Post />} />
+          <Route path="/write" element={<Write />} />
+          <Route path="/write/:id" element={<Edit />} />
+        </Routes>
+      </AnimatePresence>
+    </div>
   );
 }
 
 export default App;
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  overflow-y: auto;
-`;
-const Contents = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  width: 1250px;
-`;
