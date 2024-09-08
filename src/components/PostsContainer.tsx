@@ -9,16 +9,16 @@ import useIntersectionObserver from "../hooks/useInterSectionObserver";
 const PostsContainer = () => {
   const [posts, setPosts] = useState<PostPreviewType[]>();
   const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const target = useRef<HTMLDivElement>(null);
-  const options = {
-    root: null,
-    threshold: 0.75,
-    rootMargin: "0px",
-  };
-  const [observe, unobserve] = useIntersectionObserver(() => {
-    setPage((page) => page + 1);
-  });
+  // const options = {
+  //   root: null,
+  //   threshold: 0.75,
+  //   rootMargin: "0px",
+  // };
+  // const [observe, unobserve] = useIntersectionObserver(() => {
+  //   setPage((page) => page + 1);
+  // });
   const fetchData = async () => {
     try {
       const response = await axios.get(`${API_KEY}/posts`);

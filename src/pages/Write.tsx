@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_KEY } from "../config";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 const Write = () => {
   const navigate = useNavigate();
