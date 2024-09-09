@@ -28,7 +28,6 @@ const useFetchPostDetail = (id: string | undefined) => {
 
     fetchPostDetail();
   }, [id]);
-
   return { postDetail };
 };
 
