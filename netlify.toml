@@ -5,14 +5,3 @@
 [context.production.environment]
   TOML_ENV_VAR = "From netlify.toml"
   REACT_APP_TOML_ENV_VAR = "From netlify.toml (REACT_APP_)"
-
-[[redirects]]
-  from = "/api/*"
-  to = "https://3.80.116.29:1113/api/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
