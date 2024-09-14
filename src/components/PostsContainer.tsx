@@ -180,5 +180,5 @@ const Target = styled.div`
   justify-content: start;
   align-items: center;
   box-sizing: border-box;
-  background-color: red;
+  background-color: transparent;
 `;
