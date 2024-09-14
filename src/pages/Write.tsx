@@ -19,7 +19,7 @@ const Write = () => {
         tags: tags,
         markdown: markdown,
       };
-      const response = await axios.post(`${API_KEY}/posts`, data);
+      const response = await axios.post(`/api/posts`, data);
       if (response.data.message.includes("success")) {
         const id = response.data.message.split(":")[0];
         navigate(`/post/${id}`);

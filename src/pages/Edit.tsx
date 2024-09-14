@@ -34,7 +34,7 @@ const Edit = () => {
         comments: postDetail?.comments,
         id: postDetail?.id,
       };
-      const response = await axios.post(`${API_KEY}/posts`, data);
+      const response = await axios.post(`/api/posts`, data);
       if (response.data.message.includes("success")) {
         navigate(`/post/${id}`);
       } else {

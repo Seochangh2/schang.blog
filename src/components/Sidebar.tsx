@@ -10,7 +10,7 @@ const Sidebar = () => {
   const [tags, setTags] = useState<TagType[]>();
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${API_KEY}/tags`);
+      const response = await axios.get(`/api/tags`);
       const data = response.data.map((tag: TagResponse): TagType => {
         return {
           ...tag,

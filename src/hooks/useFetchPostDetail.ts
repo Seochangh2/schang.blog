@@ -11,8 +11,8 @@ const useFetchPostDetail = (id: string | undefined) => {
   useEffect(() => {
     const fetchPostDetail = async () => {
       try {
-        const postResponse = await axios.get(`${API_KEY}/posts/detail/${id}`);
-        const commentsResponse = await axios.get(`${API_KEY}/comments/${id}`);
+        const postResponse = await axios.get(`/api/posts/detail/${id}`);
+        const commentsResponse = await axios.get(`/api/comments/${id}`);
         const data = {
           ...postResponse.data,
           tags: JSON.parse(postResponse.data.tags),

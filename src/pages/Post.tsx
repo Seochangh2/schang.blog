@@ -28,7 +28,7 @@ function Post() {
       return;
     }
     try {
-      const response = await axios.delete(`${API_KEY}/posts/${id}`);
+      const response = await axios.delete(`/api/posts/${id}`);
       if (response.data.message.includes("success")) {
         navigate(`/`);
       }
@@ -38,7 +38,7 @@ function Post() {
   };
   const uploadComment = async () => {
     try {
-      const response = await axios.post(`${API_KEY}/comments`, commentInfo);
+      const response = await axios.post(`/api/comments`, commentInfo);
       if (response.data.message.includes("success")) {
         window.location.reload();
       }
@@ -52,7 +52,7 @@ function Post() {
     }
     const password = window.prompt("비밀번호를 입력해주세요");
     try {
-      const response = await axios.delete(`${API_KEY}/comments`, {
+      const response = await axios.delete(`/api/comments`, {
         data: { ...comment, password: password },
       });
       if (response.data.message.includes("success")) {
