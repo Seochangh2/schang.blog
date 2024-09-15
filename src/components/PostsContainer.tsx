@@ -52,8 +52,10 @@ const PostsContainer = () => {
             <PostContainer key={post.id}>
               <Title to={`/post/${post.id}`}>{post.title}</Title>
               <Content>
-                <Summary>{post.preview}</Summary>
-                <Img src={profileImg}></Img>
+                <Summary>
+                  {post.preview} {" ... "}
+                </Summary>
+                {/* <Img src={profileImg}></Img> */}
               </Content>
               <TagContainer>
                 <Date>{post.date.split("T")[0]}</Date>
