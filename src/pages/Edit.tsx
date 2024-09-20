@@ -102,7 +102,7 @@ const Edit = () => {
             <Line></Line>
             <Markdown
               text={markdown
-                .replace(/\n/gi, "\n")
+                .replace(/\n/gi, "\n\n")
                 .replace(/\*\*/gi, "@$_%!^")
                 .replace(/@\$_%!\^/gi, "**")
                 .replace(/<\/?u>/gi, "*")}
@@ -150,6 +150,7 @@ const WritingResult = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
+  overflow: scroll;
 `;
 const MarkdownInput = styled.textarea`
   margin-top: 25px;

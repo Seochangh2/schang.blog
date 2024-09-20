@@ -210,7 +210,7 @@ const EditBtn = styled.button`
 `;
 const WritingBox = styled.div`
   min-height: 600px;
-  height: 100px;
+  //height: 100px;
   width: 95%;
 `;
 const CommentBox = styled.div`
